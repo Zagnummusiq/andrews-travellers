@@ -9,14 +9,12 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20
-      - key: MONGODB_URI
-        sync: false
 
   - type: static
     name: andrews-travellers-pwa
     env: static
     plan: free
-    rootDir: frontend
+    rootDir: .
     buildCommand: npm install && npm run build
     staticPublishPath: dist/frontend/browser
     envVars:

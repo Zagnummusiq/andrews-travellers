@@ -10,9 +10,18 @@ services:
       - key: NODE_VERSION
         value: 20
       - key: MONGODB_URI
-        fromDatabase:
-          name: andrews-travellers-db
-          property: connectionString
+        sync: false
+
+  - type: static
+    name: andrews-travellers-pwa
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist/frontend/browser
+    envVars:
+      - key: NODE_VERSION
+        value: 20
 
 databases:
   - name: andrews-travellers-db

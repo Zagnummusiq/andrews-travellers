@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: andrews-travellers-api
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGODB_URI
+        fromDatabase:
+          name: andrews-travellers-db
+          property: connectionString
+
+databases:
+  - name: andrews-travellers-db
+    plan: free
